@@ -1,6 +1,7 @@
 package com.develcode.develfood.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,5 +29,8 @@ public class Customer {
 
     @OneToMany(mappedBy = "customerId", cascade={CascadeType.PERSIST})
     private List<CustomerCard> cards;
+
+    @Embedded
+    private Address address;
 }
 
