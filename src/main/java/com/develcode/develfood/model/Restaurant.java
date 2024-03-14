@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class Restaurant {
     @Embedded
     private RestaurantAddress restaurantAddress;
 
+    @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<FoodType> foodTypeList;
 }

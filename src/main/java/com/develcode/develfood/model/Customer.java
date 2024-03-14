@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -28,9 +29,11 @@ public class Customer {
 
     private String phone;
 
+    @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerCard> cards;
 
+    @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private CustomerAddress customerAddress;
 }
