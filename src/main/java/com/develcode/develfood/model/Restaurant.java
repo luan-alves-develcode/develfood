@@ -6,10 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
 
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "restaurants")
 public class Restaurant {
     @Id
@@ -23,7 +25,7 @@ public class Restaurant {
     private String phone;
 
     @Embedded
-    private Address address;
+    private RestaurantAddress restaurantAddress;
 
     private List<FoodType> foodTypeList;
 }
