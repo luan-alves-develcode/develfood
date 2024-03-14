@@ -32,7 +32,7 @@ public class Plate {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "food_type_id")
     private FoodType foodType;
 
