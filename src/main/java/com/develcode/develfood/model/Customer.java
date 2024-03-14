@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -27,7 +26,7 @@ public class Customer {
 
     private String phone;
 
-    @OneToMany(mappedBy = "customerId", cascade={CascadeType.PERSIST})
+    @OneToMany(mappedBy = "customer", cascade={CascadeType.PERSIST})
     private List<CustomerCard> cards;
 
     @Embedded

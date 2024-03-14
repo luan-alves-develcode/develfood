@@ -19,7 +19,7 @@ public class CustomerCard {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Long customerId;
+    private Customer customer;
 
     private Integer number;
 
