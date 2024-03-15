@@ -1,4 +1,4 @@
-package infra.exception;
+package com.develcode.develfood.infra.exception;
 
 import org.springframework.validation.FieldError;
 
