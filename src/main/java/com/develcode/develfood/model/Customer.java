@@ -35,6 +35,6 @@ public class Customer {
 
     @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private CustomerAddress customerAddress;
+    private List<CustomerAddress> customerAddresses;
 }
 
