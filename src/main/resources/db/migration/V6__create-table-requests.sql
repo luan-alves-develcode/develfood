@@ -1,0 +1,15 @@
+CREATE TABLE requests (
+  id BIGINT NOT NULL,
+   customer_id BIGINT NOT NULL,
+   restaurant_id BIGINT NOT NULL,
+   date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+   date_last_updated TIMESTAMP WITHOUT TIME ZONE,
+   total_value DECIMAL NOT NULL,
+   payment_type SMALLINT NOT NULL,
+   state_service VARCHAR(255) NOT NULL,
+   CONSTRAINT pk_requests PRIMARY KEY (id)
+);
+
+ALTER TABLE requests ADD CONSTRAINT FK_REQUESTS_ON_CUSTOMER FOREIGN KEY (customer_id) REFERENCES customers (id);
+
+ALTER TABLE requests ADD CONSTRAINT FK_REQUESTS_ON_RESTAURANT FOREIGN KEY (restaurant_id) REFERENCES restaurants (id);

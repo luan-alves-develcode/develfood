@@ -1,8 +1,9 @@
 CREATE TABLE users (
   id BIGINT NOT NULL,
-   email VARCHAR(255),
-   password VARCHAR(255),
-   login_date TIMESTAMP WITHOUT TIME ZONE,
-   role SMALLINT,
+   email VARCHAR(100) NOT NULL,
+   password VARCHAR(80) NOT NULL,
+   login_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+   role SMALLINT NOT NULL,
+   active BOOLEAN NOT NULL,
    CONSTRAINT pk_users PRIMARY KEY (id)
 );

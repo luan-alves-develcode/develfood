@@ -30,6 +30,8 @@ public class User implements UserDetails {
 
     private Role role;
 
+    private boolean active;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

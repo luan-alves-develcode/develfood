@@ -1,0 +1,13 @@
+CREATE TABLE plates (
+  id BIGINT NOT NULL,
+   name VARCHAR(255) NOT NULL,
+   description VARCHAR(255) NOT NULL,
+   price DECIMAL NOT NULL,
+   restaurant_id BIGINT NOT NULL,
+   food_type_id BIGINT NOT NULL,
+   CONSTRAINT pk_plates PRIMARY KEY (id)
+);
+
+ALTER TABLE plates ADD CONSTRAINT FK_PLATES_ON_FOOD_TYPE FOREIGN KEY (food_type_id) REFERENCES food_types (id);
+
+ALTER TABLE plates ADD CONSTRAINT FK_PLATES_ON_RESTAURANT FOREIGN KEY (restaurant_id) REFERENCES restaurants (id);

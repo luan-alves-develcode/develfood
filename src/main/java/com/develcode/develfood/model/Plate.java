@@ -1,7 +1,5 @@
-package com.develcode.develfood.model.enums;
+package com.develcode.develfood.model;
 
-import com.develcode.develfood.model.FoodType;
-import com.develcode.develfood.model.Restaurant;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
