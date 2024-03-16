@@ -25,4 +25,6 @@ public class User {
     private Date loginDate;
 
     private Role role;
+
+    private boolean active;
 }
