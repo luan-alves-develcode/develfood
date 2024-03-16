@@ -1,11 +1,11 @@
 CREATE TABLE customer_addresses (
   id BIGINT NOT NULL,
-   street VARCHAR(255),
+   street VARCHAR(255) NOT NULL,
    number INTEGER,
-   neighbourhood VARCHAR(255),
-   city VARCHAR(100),
-   zip_code VARCHAR(8),
-   customer_id BIGINT,
+   neighbourhood VARCHAR(255) NOT NULL,
+   city VARCHAR(100) NOT NULL,
+   zip_code VARCHAR(8) NOT NULL,
+   customer_id BIGINT NOT NULL,
    CONSTRAINT pk_customer_addresses PRIMARY KEY (id)
 );
 

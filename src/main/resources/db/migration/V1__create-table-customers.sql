@@ -1,10 +1,10 @@
 CREATE TABLE customers (
   id BIGINT NOT NULL,
    first_name VARCHAR(50) NOT NULL,
-   last_name VARCHAR(150),
-   cpf CHAR(11),
-   phone VARCHAR(18),
-   user_id BIGINT,
+   last_name VARCHAR(150) NOT NULL,
+   cpf CHAR(11) NOT NULL,
+   phone VARCHAR(18) NOT NULL,
+   user_id BIGINT NOT NULL,
    CONSTRAINT pk_customers PRIMARY KEY (id)
 );
 
