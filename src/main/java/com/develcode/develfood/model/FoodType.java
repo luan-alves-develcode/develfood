@@ -18,4 +18,6 @@ public class FoodType {
     private Long id;
 
     private String name;
+
+    private boolean isActive;
 }

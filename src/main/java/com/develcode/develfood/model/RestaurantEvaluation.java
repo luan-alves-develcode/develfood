@@ -35,4 +35,6 @@ public class RestaurantEvaluation {
     private Integer grade;
 
     private Date evaluationDate;
+
+    private boolean isActive;
 }

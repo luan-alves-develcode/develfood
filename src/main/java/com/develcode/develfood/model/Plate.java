@@ -27,6 +27,8 @@ public class Plate {
 
     private BigDecimal price;
 
+    private boolean isActive;
+
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;

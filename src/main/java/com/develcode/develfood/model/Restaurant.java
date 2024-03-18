@@ -37,11 +37,10 @@ public class Restaurant {
     @Embedded
     private RestaurantAddress restaurantAddress;
 
+    private boolean isActive;
+
     @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<FoodType> foodTypeList;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

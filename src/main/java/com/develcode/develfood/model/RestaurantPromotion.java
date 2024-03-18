@@ -30,4 +30,6 @@ public class RestaurantPromotion {
     private Date initialDate;
 
     private Date finalDate;
+
+    private boolean isActive;
 }
