@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.Length;
 
-public class UserSignUpDto {
+public class CustomerSignUpDto {
 
     @Length(max = 50)
     private String firstName;
