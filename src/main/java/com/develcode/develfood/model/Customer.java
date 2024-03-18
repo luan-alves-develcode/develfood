@@ -43,6 +43,13 @@ public class Customer {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerAddress> customerAddresses;
 
+    public Customer(String firstName, String lastName, String cpf, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cpf = cpf;
+        this.phone = phone;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
