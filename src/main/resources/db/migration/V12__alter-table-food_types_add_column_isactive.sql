@@ -1,0 +1,1 @@
+ALTER TABLE food_types ADD is_active BOOLEAN DEFAULT true NOT NULL;
