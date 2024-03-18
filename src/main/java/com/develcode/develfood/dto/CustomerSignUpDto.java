@@ -3,8 +3,10 @@ package com.develcode.develfood.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
 
+@Getter
 public class CustomerSignUpDto {
 
     @Length(max = 50)
