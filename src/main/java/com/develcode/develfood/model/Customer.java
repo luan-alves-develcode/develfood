@@ -33,7 +33,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private final User user;
 
     @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -43,15 +43,13 @@ public class Customer {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerAddress> customerAddresses;
 
-    public Customer(String firstName, String lastName, String cpf, String phone) {
+    public Customer(String firstName, String lastName, String cpf, String phone, User user) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.cpf = cpf;
         this.phone = phone;
-    }
-
-    public void setUser(User user) {
         this.user = user;
     }
+
 }
 
