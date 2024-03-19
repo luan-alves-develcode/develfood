@@ -14,7 +14,7 @@ public class CustomerSignUpDto {
     @Length(max = 150)
     private String lastName;
 
-    @Pattern(regexp = "[0-9]{3}[\\.][0-9]{3}[\\.][0-9]{3}[\\-][0-9]{2}")
+    @Pattern(regexp = "[0-9]{3}[0-9]{3}[0-9]{3}[0-9]{2}")
     private String cpf;
 
     @Length(max = 18)
