@@ -6,7 +6,6 @@ import com.develcode.develfood.infra.security.TokenService;
 import com.develcode.develfood.model.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,7 +28,7 @@ public class AuthenticationController {
         var authenticationToken = new UsernamePasswordAuthenticationToken(authData.getEmail(), authData.getPassword());
         var authentication = authenticationManager.authenticate(authenticationToken);
 
-        var tokenJwt = tokenService.gerarToken( (User) authentication.getPrincipal());
+        var tokenJwt = tokenService.generateToken( (User) authentication.getPrincipal());
 
         return ResponseEntity.ok(new JwtTokenData(tokenJwt));
     }
