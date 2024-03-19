@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class AuthenticationController {
 
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
-    TokenService tokenService;
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity<JwtTokenData> login(@RequestBody @Valid AuthData authData) {

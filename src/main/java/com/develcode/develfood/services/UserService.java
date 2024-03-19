@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
-    public CustomerDataDto signUpNewUser(CustomerSignUpDto userDto) throws EmailExistsException {
+    public CustomerDataDto newCustomerSignUp(CustomerSignUpDto userDto) throws EmailExistsException {
         if (userRepository.existsByEmail(userDto.getEmail())) {
             throw new EmailExistsException(
                     "Email address already in use: " + userDto.getEmail());
