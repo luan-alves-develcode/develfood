@@ -8,17 +8,20 @@ import com.develcode.develfood.repository.CustomerRepository;
 import com.develcode.develfood.repository.UserRepository;
 import com.develcode.develfood.services.exception.EmailExistsException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private CustomerRepository customerRepository;
 
     public CustomerDataDto newCustomerSignUp(CustomerSignUpDto userDto) throws EmailExistsException {
