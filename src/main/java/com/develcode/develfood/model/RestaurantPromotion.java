@@ -8,11 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Getter
+@NoArgsConstructor
 @Table(name = "restaurant_promotions")
 public class RestaurantPromotion {
     @Id
