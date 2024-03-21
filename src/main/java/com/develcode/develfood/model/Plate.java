@@ -18,8 +18,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Table(name = "plates")
 public class Plate {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

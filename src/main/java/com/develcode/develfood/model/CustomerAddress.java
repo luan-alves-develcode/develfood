@@ -1,5 +1,6 @@
 package com.develcode.develfood.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +16,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "customer_addresses")
 public class CustomerAddress {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String street;

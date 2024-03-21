@@ -17,8 +17,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "customer_favorite_plates")
 public class CustomerFavoritePlate {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
