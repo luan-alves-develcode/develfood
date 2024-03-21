@@ -1,5 +1,6 @@
 package com.develcode.develfood.model;
 
+import com.develcode.develfood.dto.RestaurantSignUpDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -48,4 +49,12 @@ public class Restaurant {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<FoodType> foodTypeList;
 
+    public Restaurant(RestaurantSignUpDto restaurantDto, User savedUser) {
+        this.name = restaurantDto.getName();
+        this.cnpj = restaurantDto.getCnpj();
+        this.phone = restaurantDto.getPhone();
+        this.restaurantAddress = new RestaurantAddress(restaurantDto.getStreet(), restaurantDto.getNumber(), restaurantDto.getNeighbourhood(), restaurantDto.getCity(), restaurantDto.getZipcode());
+        this.user = savedUser;
+        this.isActive = true;
+    }
 }
