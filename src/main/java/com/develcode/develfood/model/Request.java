@@ -19,8 +19,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "requests")
 public class Request {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

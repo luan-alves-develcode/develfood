@@ -19,8 +19,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Table(name = "request_items")
 public class RequestItem {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
