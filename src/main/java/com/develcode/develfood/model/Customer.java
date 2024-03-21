@@ -35,7 +35,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private final User user;
+    private User user;
 
     @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
