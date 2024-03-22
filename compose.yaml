@@ -1,6 +1,16 @@
 version: '0.1'
 
 services:
+  postgres:
+    image: 'postgres:16'
+    environment:
+      POSTGRES_DB: develfood
+      POSTGRES_PASSWORD: develfood
+      POSTGRES_USER: develfood
+    networks:
+      - app-network
+    ports:
+      - '5432:5432'
   app:
     build: .
     image: develfood
@@ -14,16 +24,6 @@ services:
       - SPRING_DATASOURCE_PASSWORD=develfood
     networks:
       - app-network
-  postgres:
-    image: 'postgres:16'
-    environment:
-      POSTGRES_DB: develfood
-      POSTGRES_PASSWORD: develfood
-      POSTGRES_USER: develfood
-    networks:
-      - app-network
-    ports:
-      - '5432:5432'
 
 networks:
   app-network:
