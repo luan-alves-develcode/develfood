@@ -31,8 +31,4 @@ public class Address {
     private String city;
 
     private String zipCode;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 }
