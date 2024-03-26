@@ -1,5 +1,6 @@
 package com.develcode.develfood.model;
 
+import com.develcode.develfood.model.enums.CreditCardFlag;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class CustomerCard {
 
     private Date validDate;
 
-    private String flag;
+    private CreditCardFlag flag;
 
     private String signatureCode;
 }

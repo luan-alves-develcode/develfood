@@ -3,7 +3,7 @@ CREATE TABLE customer_cards (
    customer_id BIGINT NOT NULL,
    number INTEGER NOT NULL,
    valid_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-   flag VARCHAR(255) NOT NULL,
+   flag SMALLINT NOT NULL,
    signature_code VARCHAR(255) NOT NULL,
    CONSTRAINT pk_customer_cards PRIMARY KEY (id)
 );
