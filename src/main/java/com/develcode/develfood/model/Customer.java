@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -36,6 +38,15 @@ public class Customer {
 
     private String phone;
 
+    private String photoUrl;
+
+    @Setter
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "customer_favorite_plates",
+        joinColumns = @JoinColumn(name = "customer_id"),
+        inverseJoinColumns = @JoinColumn(name = "plate_id"))
+    private List<Plate> customerFavoritePlates;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -48,8 +59,5 @@ public class Customer {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerAddress> customerAddresses;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
 
