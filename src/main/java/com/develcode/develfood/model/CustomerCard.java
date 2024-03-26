@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -29,9 +29,9 @@ public class CustomerCard {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private Integer number;
+    private Long number;
 
-    private Date validDate;
+    private LocalDate validDate;
 
     private CreditCardFlag flag;
 
