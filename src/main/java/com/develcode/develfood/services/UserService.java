@@ -13,6 +13,7 @@ import com.develcode.develfood.repository.RestaurantRepository;
 import com.develcode.develfood.repository.UserRepository;
 import com.develcode.develfood.services.exception.validation.EmailExistsException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +61,9 @@ public class UserService {
         var savedRestaurant = restaurantRepository.save(restaurant);
 
         return new RestaurantDataDto(savedUser, savedRestaurant);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User credential are invalid"));
     }
 }
