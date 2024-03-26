@@ -4,8 +4,6 @@ public enum Role {
     CUSTOMER ("Cliente"),
     RESTAURANT ("Restaurante");
 
-    private String name;
     Role(String name) {
-        this.name = name;
     }
 }

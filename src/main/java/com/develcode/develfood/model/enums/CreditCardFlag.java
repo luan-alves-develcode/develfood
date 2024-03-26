@@ -9,7 +9,6 @@ public enum CreditCardFlag {
     HIPERCARD("Hipercard"),
     ALELO("Alelo");
 
-    private String name;
-
-    CreditCardFlag(String name) { this.name = name; }
+    CreditCardFlag(String name) {
+    }
 }
