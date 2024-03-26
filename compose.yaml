@@ -1,9 +1,0 @@
-services:
-  postgres:
-    image: 'postgres:16'
-    environment:
-      - 'POSTGRES_DB=develfood'
-      - 'POSTGRES_PASSWORD=develfood'
-      - 'POSTGRES_USER=develfood'
-    ports:
-      - '5432:5432'
