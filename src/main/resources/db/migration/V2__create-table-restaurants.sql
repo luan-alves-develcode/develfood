@@ -8,5 +8,15 @@ CREATE TABLE restaurants (
    neighbourhood VARCHAR(255) NOT NULL,
    city VARCHAR(100) NOT NULL,
    zip_code VARCHAR(8) NOT NULL,
+   user_id BIGINT NOT NULL,
+   address_id BIGINT,
    CONSTRAINT pk_restaurants PRIMARY KEY (id)
 );
+
+ALTER TABLE restaurants ADD CONSTRAINT uc_restaurants_user UNIQUE (user_id);
+
+ALTER TABLE restaurants ADD CONSTRAINT fk_restaurants_on_address FOREIGN KEY (user_id) REFERENCES users (id);
+
+ALTER TABLE restaurants ADD CONSTRAINT uc_restaurants_address UNIQUE (address_id);
+
+ALTER TABLE restaurants ADD CONSTRAINT fk_restaurants_on_address FOREIGN KEY (address_id) REFERENCES addresses (id);

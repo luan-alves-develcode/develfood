@@ -39,8 +39,9 @@ public class Restaurant {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Embedded
-    private RestaurantAddress restaurantAddress;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     private boolean isActive;
 

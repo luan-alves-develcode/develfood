@@ -55,9 +55,9 @@ public class Customer {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerCard> cards;
 
-    @Setter
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<CustomerAddress> customerAddresses;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 }
 

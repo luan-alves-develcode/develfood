@@ -6,9 +6,14 @@ CREATE TABLE customers (
    cpf CHAR(11) NOT NULL,
    phone VARCHAR(18) NOT NULL,
    user_id BIGINT NOT NULL,
+   address_id BIGINT,
    CONSTRAINT pk_customers PRIMARY KEY (id)
 );
 
 ALTER TABLE customers ADD CONSTRAINT uc_customers_user UNIQUE (user_id);
 
 ALTER TABLE customers ADD CONSTRAINT FK_CUSTOMERS_ON_USER FOREIGN KEY (user_id) REFERENCES users (id);
+
+ALTER TABLE customers ADD CONSTRAINT uc_customers_address UNIQUE (address_id);
+
+ALTER TABLE customers ADD CONSTRAINT fk_customers_on_address FOREIGN KEY (address_id) REFERENCES addresses (id);
