@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -30,9 +30,9 @@ public class RestaurantPromotion {
 
     private Float percent;
 
-    private Date initialDate;
+    private LocalDate initialDate;
 
-    private Date finalDate;
+    private LocalDate finalDate;
 
     private boolean isActive;
 }
