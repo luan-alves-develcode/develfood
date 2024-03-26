@@ -5,4 +5,5 @@ CREATE TABLE addresses (
    neighbourhood VARCHAR(255) NOT NULL,
    city VARCHAR(100) NOT NULL,
    zip_code VARCHAR(8) NOT NULL,
+   CONSTRAINT pk_addresses PRIMARY KEY (id)
 );

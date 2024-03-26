@@ -15,7 +15,7 @@ CREATE TABLE restaurants (
 
 ALTER TABLE restaurants ADD CONSTRAINT uc_restaurants_user UNIQUE (user_id);
 
-ALTER TABLE restaurants ADD CONSTRAINT fk_restaurants_on_address FOREIGN KEY (user_id) REFERENCES users (id);
+ALTER TABLE restaurants ADD CONSTRAINT fk_restaurants_on_users FOREIGN KEY (user_id) REFERENCES users (id);
 
 ALTER TABLE restaurants ADD CONSTRAINT uc_restaurants_address UNIQUE (address_id);
 
