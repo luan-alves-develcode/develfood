@@ -29,7 +29,6 @@ public class RequestItem {
     @JoinColumn(name = "request_id")
     private Request request;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "plate_id")
     private Plate plate;

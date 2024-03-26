@@ -9,13 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -34,10 +32,8 @@ public class User implements UserDetails {
 
     private LocalDateTime loginDate;
 
-    @Setter
     private Role role;
 
-    @Setter
     private boolean active;
 
     public User(String email, String password) {

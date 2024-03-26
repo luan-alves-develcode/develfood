@@ -26,12 +26,10 @@ public class RestaurantEvaluation {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;

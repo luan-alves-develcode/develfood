@@ -15,7 +15,6 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -40,7 +39,6 @@ public class Customer {
 
     private String photoUrl;
 
-    @Setter
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "customer_favorite_plates",
         joinColumns = @JoinColumn(name = "customer_id"),
@@ -51,7 +49,6 @@ public class Customer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerCard> cards;
 
