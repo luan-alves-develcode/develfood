@@ -45,8 +45,8 @@ public class Restaurant {
 
     private boolean isActive;
 
-    @Setter
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private List<FoodType> foodTypeList;
+    @OneToOne
+    @JoinColumn(name = "food_types_id")
+    private FoodType foodType;
 
 }
