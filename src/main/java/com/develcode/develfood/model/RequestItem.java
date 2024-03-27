@@ -10,7 +10,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -29,7 +28,6 @@ public class RequestItem {
     @JoinColumn(name = "request_id")
     private Request request;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "plate_id")
     private Plate plate;

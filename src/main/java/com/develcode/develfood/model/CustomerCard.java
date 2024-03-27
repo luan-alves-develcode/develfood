@@ -1,5 +1,6 @@
 package com.develcode.develfood.model;
 
+import com.develcode.develfood.model.enums.CreditCardFlag;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -28,11 +29,11 @@ public class CustomerCard {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private Integer number;
+    private Long number;
 
-    private Date validDate;
+    private LocalDate validDate;
 
-    private String flag;
+    private CreditCardFlag flag;
 
     private String signatureCode;
 }

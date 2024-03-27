@@ -3,8 +3,8 @@ CREATE TABLE restaurant_promotions (
    restaurant_id BIGINT NOT NULL,
    name VARCHAR(255) NOT NULL,
    percent FLOAT NOT NULL,
-   initial_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-   final_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+   initial_date date,
+   final_date date,
    CONSTRAINT pk_restaurant_promotions PRIMARY KEY (id)
 );
 

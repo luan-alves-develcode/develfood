@@ -10,9 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -25,19 +24,17 @@ public class RestaurantEvaluation {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     private Integer grade;
 
-    private Date evaluationDate;
+    private LocalDateTime evaluationDate;
 
     private boolean isActive;
 }

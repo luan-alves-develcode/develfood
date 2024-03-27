@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -33,9 +33,9 @@ public class Request {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    private Date date;
+    private LocalDateTime date;
 
-    private Date dateLastUpdated;
+    private LocalDateTime dateLastUpdated;
 
     private BigDecimal totalValue;
 

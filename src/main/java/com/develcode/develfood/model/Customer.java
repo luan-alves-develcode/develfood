@@ -8,12 +8,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -36,25 +37,24 @@ public class Customer {
 
     private String phone;
 
+    private String photoUrl;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "customer_favorite_plates",
+        joinColumns = @JoinColumn(name = "customer_id"),
+        inverseJoinColumns = @JoinColumn(name = "plate_id"))
+    private List<Plate> customerFavoritePlates;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Setter
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<CustomerCard> cards;
 
-    @Setter
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<CustomerAddress> customerAddresses;
-
-    public Customer(String firstName, String lastName, String cpf, String phone, User user) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cpf = cpf;
-        this.phone = phone;
-        this.user = user;
-    }
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 }
 

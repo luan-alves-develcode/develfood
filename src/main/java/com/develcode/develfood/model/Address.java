@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "customer_addresses")
-public class CustomerAddress {
+@Table(name = "addresses")
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,4 @@ public class CustomerAddress {
     private String city;
 
     private String zipCode;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 }

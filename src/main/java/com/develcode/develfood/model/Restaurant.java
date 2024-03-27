@@ -1,23 +1,16 @@
 package com.develcode.develfood.model;
 
 import com.develcode.develfood.dto.RestaurantSignUpDto;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -40,14 +33,15 @@ public class Restaurant {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Embedded
-    private RestaurantAddress restaurantAddress;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     private boolean isActive;
 
-    @Setter
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private List<FoodType> foodTypeList;
+    @OneToOne
+    @JoinColumn(name = "food_types_id")
+    private FoodType foodType;
 
     public Restaurant(RestaurantSignUpDto restaurantDto, User savedUser) {
         this.name = restaurantDto.getName();

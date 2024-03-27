@@ -9,12 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -31,29 +30,22 @@ public class User implements UserDetails {
     
     private String password;
 
-    private Date loginDate;
+    private LocalDateTime loginDate;
 
-    @Setter
     private Role role;
 
-    @Setter
     private boolean active;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
         this.active = true;
-        this.loginDate = new Date();
+        this.loginDate = LocalDateTime.now();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
     }
 
     @Override
