@@ -4,6 +4,7 @@ import com.develcode.develfood.dto.CustomerDataDto;
 import com.develcode.develfood.dto.CustomerSignUpDto;
 import com.develcode.develfood.dto.RestaurantDataDto;
 import com.develcode.develfood.dto.RestaurantSignUpDto;
+import com.develcode.develfood.exception.ValidationException;
 import com.develcode.develfood.model.Customer;
 import com.develcode.develfood.model.Restaurant;
 import com.develcode.develfood.model.User;
@@ -11,6 +12,7 @@ import com.develcode.develfood.model.enums.Role;
 import com.develcode.develfood.repository.CustomerRepository;
 import com.develcode.develfood.repository.RestaurantRepository;
 import com.develcode.develfood.repository.UserRepository;
+import com.develcode.develfood.services.exception.CnpjExistsException;
 import com.develcode.develfood.services.exception.EmailExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,38 +27,50 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final CustomerRepository customerRepository;
+    private final CustomerService customerService;
 
-    private final RestaurantRepository restaurantRepository;
+    private final RestaurantService restaurantService;
 
-    public CustomerDataDto newCustomerSignUp(CustomerSignUpDto userDto) throws EmailExistsException {
-        if (userRepository.existsByEmail(userDto.getEmail())) {
+    public CustomerDataDto newCustomerSignUp(CustomerSignUpDto customerSignUpDto) throws ValidationException {
+        if (userRepository.existsByEmail(customerSignUpDto.getEmail())) {
             throw new EmailExistsException(
-                    "Email address already in use: " + userDto.getEmail());
+                    "Email address already in use: " + customerSignUpDto.getEmail());
         }
-        var user = new User(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()), Role.CUSTOMER);
+
+        if (customerService.existsByCpf(customerSignUpDto.getCpf())) {
+            throw new CnpjExistsException(
+                    "CPF already in use: " + customerSignUpDto.getCpf());
+        }
+
+        var user = new User(customerSignUpDto.getEmail(), passwordEncoder.encode(customerSignUpDto.getPassword()), Role.CUSTOMER);
 
         var savedUser = userRepository.save(user);
 
-        var customer = new Customer(userDto.getFirstName(), userDto.getLastName(), userDto.getCpf(), userDto.getPhone(), savedUser);
+        var customer = new Customer(customerSignUpDto.getFirstName(), customerSignUpDto.getLastName(), customerSignUpDto.getCpf(), customerSignUpDto.getPhone(), savedUser);
 
-        var savedCustomer = customerRepository.save(customer);
+        var savedCustomer = customerService.save(customer);
 
         return new CustomerDataDto(savedUser, savedCustomer);
     }
 
-    public RestaurantDataDto newRestaurantSignUp(RestaurantSignUpDto restaurantSignUpDto) throws EmailExistsException {
+    public RestaurantDataDto newRestaurantSignUp(RestaurantSignUpDto restaurantSignUpDto) throws ValidationException {
         if (userRepository.existsByEmail(restaurantSignUpDto.getEmail())) {
             throw new EmailExistsException(
                     "Email address already in use: " + restaurantSignUpDto.getEmail());
         }
+
+        if (restaurantService.existsByCnpj(restaurantSignUpDto.getCnpj())) {
+            throw new CnpjExistsException(
+                    "CNPJ already in use: " + restaurantSignUpDto.getCnpj());
+        }
+
         var user = new User(restaurantSignUpDto.getEmail(), passwordEncoder.encode(restaurantSignUpDto.getPassword()), Role.RESTAURANT);
 
         var savedUser = userRepository.save(user);
 
         var restaurant = new Restaurant(restaurantSignUpDto, savedUser);
 
-        var savedRestaurant = restaurantRepository.save(restaurant);
+        var savedRestaurant = restaurantService.save(restaurant);
 
         return new RestaurantDataDto(savedUser, savedRestaurant);
     }

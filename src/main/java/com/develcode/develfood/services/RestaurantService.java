@@ -12,11 +12,11 @@ public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
 
-    public Restaurant save(Restaurant restaurant) {
-        if (restaurantRepository.existsByCnpj(restaurant.getCnpj())) {
-            throw new CnpjExistsException("Cnpj already in use: " + restaurant.getCnpj());
-        }
+    public boolean existsByCnpj(String cnpj) {
+        return restaurantRepository.existsByCnpj(cnpj);
+    }
 
+    public Restaurant save(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
 }
