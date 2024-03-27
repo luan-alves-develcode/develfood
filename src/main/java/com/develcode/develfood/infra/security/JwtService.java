@@ -19,7 +19,7 @@ public class JwtService {
     private String secret;
 
     public String generateToken(User user) {
-        
+
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create().withIssuer("develfood")
@@ -28,7 +28,7 @@ public class JwtService {
                     .withClaim("id", user.getId())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
-            throw new RuntimeException("Error generating jwt token", exception);
+            throw new JWTCreationException("Error generating jwt token", exception);
         }
     }
 
@@ -41,7 +41,7 @@ public class JwtService {
                     .verify(jwtToken)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            throw new RuntimeException("JWT Token invalid or expired");
+            throw new JWTVerificationException("JWT Token invalid or expired");
         }
     }
 

@@ -1,5 +1,6 @@
 package com.develcode.develfood.infra.exception;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.develcode.develfood.exception.ValidationException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,12 @@ public class ErrorHandler {
         var errors = exception.getMessage();
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errors);
+    }
+
+    @ExceptionHandler(JWTVerificationException.class)
+    public ResponseEntity handleJWTVerificationException(JWTVerificationException exception) {
+        var errors = exception.getMessage();
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errors);
     }
 }
