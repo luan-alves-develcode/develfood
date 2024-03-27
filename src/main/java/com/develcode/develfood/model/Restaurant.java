@@ -47,7 +47,7 @@ public class Restaurant {
         this.name = restaurantDto.getName();
         this.cnpj = restaurantDto.getCnpj();
         this.phone = restaurantDto.getPhone();
-        this.restaurantAddress = new RestaurantAddress(restaurantDto.getStreet(), restaurantDto.getNumber(), restaurantDto.getNeighbourhood(), restaurantDto.getCity(), restaurantDto.getZipcode());
+        this.address = new Address(restaurantDto.getStreet(), restaurantDto.getNumber(), restaurantDto.getNeighbourhood(), restaurantDto.getCity(), restaurantDto.getZipcode());
         this.user = savedUser;
         this.isActive = true;
     }
