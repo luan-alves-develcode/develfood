@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +29,12 @@ public class Address {
     private String city;
 
     private String zipCode;
+
+    public Address(String street, Integer number, String neighbourhood, String city, String zipCode) {
+        this.street = street;
+        this.number = number;
+        this.neighbourhood = neighbourhood;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
 }
