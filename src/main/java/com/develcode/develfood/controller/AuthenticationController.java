@@ -8,6 +8,7 @@ import com.develcode.develfood.dto.RestaurantDataDto;
 import com.develcode.develfood.dto.RestaurantSignUpDto;
 import com.develcode.develfood.infra.security.JwtService;
 import com.develcode.develfood.model.User;
+import com.develcode.develfood.services.AuthenticationService;
 import com.develcode.develfood.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,16 +27,13 @@ public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
 
-    private final JwtService jwtService;
+    private final AuthenticationService authenticationService;
 
     private final UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<JwtTokenData> login(@RequestBody @Valid AuthData authData) {
-        var authenticationToken = new UsernamePasswordAuthenticationToken(authData.getEmail(), authData.getPassword());
-        var authentication = authenticationManager.authenticate(authenticationToken);
-
-        var tokenJwt = jwtService.generateToken( (User) authentication.getPrincipal());
+        var tokenJwt = authenticationService.emailPasswordLoginAndGetToken(authData, authenticationManager);
 
         return ResponseEntity.ok(new JwtTokenData(tokenJwt));
    }
