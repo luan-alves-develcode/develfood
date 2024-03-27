@@ -34,8 +34,7 @@ public class UserService {
             throw new EmailExistsException(
                     "Email address already in use: " + userDto.getEmail());
         }
-        var user = new User(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(Role.CUSTOMER);
+        var user = new User(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()), Role.CUSTOMER);
 
         var savedUser = userRepository.save(user);
 
@@ -51,8 +50,7 @@ public class UserService {
             throw new EmailExistsException(
                     "Email address already in use: " + restaurantSignUpDto.getEmail());
         }
-        var user = new User(restaurantSignUpDto.getEmail(), passwordEncoder.encode(restaurantSignUpDto.getPassword()));
-        user.setRole(Role.RESTAURANT);
+        var user = new User(restaurantSignUpDto.getEmail(), passwordEncoder.encode(restaurantSignUpDto.getPassword()), Role.RESTAURANT);
 
         var savedUser = userRepository.save(user);
 

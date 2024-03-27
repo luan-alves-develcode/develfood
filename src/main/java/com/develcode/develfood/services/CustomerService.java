@@ -20,45 +20,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService {
 
-    private final PasswordEncoder passwordEncoder;
 
-    private final UserRepository userRepository;
-
-    private final CustomerRepository customerRepository;
-
-    private final RestaurantRepository restaurantRepository;
-
-    public CustomerDataDto newCustomerSignUp(CustomerSignUpDto userDto) throws EmailExistsException {
-        if (userRepository.existsByEmail(userDto.getEmail())) {
-            throw new EmailExistsException(
-                    "Email address already in use: " + userDto.getEmail());
-        }
-        var user = new User(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()));
-        user.setRole(Role.CUSTOMER);
-
-        var savedUser = userRepository.save(user);
-
-        var customer = new Customer(userDto.getFirstName(), userDto.getLastName(), userDto.getCpf(), userDto.getPhone(), savedUser);
-
-        var savedCustomer = customerRepository.save(customer);
-
-        return new CustomerDataDto(savedUser, savedCustomer);
-    }
-
-    public RestaurantDataDto newRestaurantSignUp(RestaurantSignUpDto restaurantSignUpDto) throws EmailExistsException {
-        if (userRepository.existsByEmail(restaurantSignUpDto.getEmail())) {
-            throw new EmailExistsException(
-                    "Email address already in use: " + restaurantSignUpDto.getEmail());
-        }
-        var user = new User(restaurantSignUpDto.getEmail(), passwordEncoder.encode(restaurantSignUpDto.getPassword()));
-        user.setRole(Role.RESTAURANT);
-
-        var savedUser = userRepository.save(user);
-
-        var restaurant = new Restaurant(restaurantSignUpDto, savedUser);
-
-        var savedRestaurant = restaurantRepository.save(restaurant);
-
-        return new RestaurantDataDto(savedUser, savedRestaurant);
-    }
 }
