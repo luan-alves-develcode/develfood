@@ -2,7 +2,7 @@ package com.develcode.develfood.services;
 
 import com.develcode.develfood.model.Restaurant;
 import com.develcode.develfood.repository.RestaurantRepository;
-import com.develcode.develfood.services.exception.validation.CnpjExistsException;
+import com.develcode.develfood.services.exception.CnpjExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
